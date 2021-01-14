@@ -1,12 +1,12 @@
 import java.util.*;
 public class Radix{
   public static int nth(int n, int col){
-    if(col>length(n)){
+    if(col>=length(n)){
       return 0;
     }
     else{
     String nn=Integer.toString(n);
-    return Integer.parseInt(nn.substring(col,col+1));
+    return Integer.parseInt(nn.substring(nn.length()-col-1,nn.length()-col));
   }
   }
 
@@ -34,9 +34,19 @@ public static void radixSortSimple(SortableLinkedList data){
       col=l;
     }
   }
-  //for(int i=0;i<col;i++){
+  SortableLinkedList[] buckets = new SortableLinkedList[10];
+  for(int i=0;i<10;i++){
+    buckets[i]=new SortableLinkedList();
+  }
+  for(int i=0;i<col;i++){
+    while(data.size()>0){
+      int d=data.remove(0);
+    int colPut = nth(d,i);
+    buckets[colPut].add(d);
+  }
+  merge(data,buckets);
+}
 
-//  }
 
 
 }
@@ -77,5 +87,6 @@ merge(original, buckets);
     buckets[i]=inBucket;
   }
   radixSortSimple(d);
+  System.out.println(d);
   }
 }
