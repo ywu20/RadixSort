@@ -91,7 +91,7 @@ for(int i=0;i<10;i++){
 }
 merge(original, buckets);
     System.out.println(original);
-  */
+
 
   SortableLinkedList d=new SortableLinkedList();
   d.add(4);d.add(345);d.add(23);
@@ -99,5 +99,6 @@ merge(original, buckets);
   d.add(-453);d.add(-23); d.add(-6);
   radixSort(d);
   System.out.println(d);
+  */
   }
 }
