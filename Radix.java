@@ -1,8 +1,13 @@
 import java.util.*;
 public class Radix{
   public static int nth(int n, int col){
+    if(col>length(n)){
+      return 0;
+    }
+    else{
     String nn=Integer.toString(n);
     return Integer.parseInt(nn.substring(col,col+1));
+  }
   }
 
 public static void merge(MyLinkedList original, MyLinkedList[] buckets){
@@ -20,12 +25,23 @@ public static void merge( SortableLinkedList original, SortableLinkedList[]bucke
     original.extend(buckets[i]);
 }
 }
-/*
+
 public static void radixSortSimple(SortableLinkedList data){
+  int col=0;
+  for(int i=0;i<data.size();i++){
+    int l=length(data.get(i));
+    if(l>col){
+      col=l;
+    }
+  }
+  //for(int i=0;i<col;i++){
+
+//  }
+
 
 }
-public static void radixSort(SortableLinkedList data);
-*/
+//public static void radixSort(SortableLinkedList data);
+
   public static void main (String[] args){
 
     /*
@@ -51,7 +67,7 @@ merge(original, buckets);
   */
 
   SortableLinkedList d=new SortableLinkedList();
-  //d.add(4);d.add(345);d.add(23);
+  d.add(4);d.add(345);d.add(23);
   SortableLinkedList[] buckets=new SortableLinkedList[10];
   for(int i=0;i<10;i++){
     SortableLinkedList inBucket=new SortableLinkedList();
@@ -60,5 +76,6 @@ merge(original, buckets);
     }
     buckets[i]=inBucket;
   }
+  radixSortSimple(d);
   }
 }
