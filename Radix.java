@@ -78,8 +78,8 @@ while(data.size()>0){
 
   radixSortSimple(negative);
   radixSortSimple(positive);
-  for(int i=negative.size()-1;i>=0;i--){
-    data.add(negative.get(i) * -1);
+  while(negative.size()>0){
+    data.add(negative.remove(0) * -1);
   }
 data.extend(positive);
 
