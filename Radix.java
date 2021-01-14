@@ -46,11 +46,28 @@ public static void radixSortSimple(SortableLinkedList data){
   }
   merge(data,buckets);
 }
+}
 
+public static void radixSort(SortableLinkedList data){
+  SortableLinkedList negative=new SortableLinkedList();
+  SortableLinkedList positive=new SortableLinkedList();
+while(data.size()>0){
+    int a=data.remove(0);
+    if(Math.abs(a) !=a){
+      negative.add(Math.abs(a));
+    }else{
+      positive.add(a);
+    }
+  }
 
+  radixSortSimple(negative);
+  radixSortSimple(positive);
+  for(int i=negative.size()-1;i>=0;i--){
+    data.add(negative.get(i) * -1);
+  }
+data.extend(positive);
 
 }
-//public static void radixSort(SortableLinkedList data);
 
   public static void main (String[] args){
 
@@ -78,15 +95,9 @@ merge(original, buckets);
 
   SortableLinkedList d=new SortableLinkedList();
   d.add(4);d.add(345);d.add(23);
-  SortableLinkedList[] buckets=new SortableLinkedList[10];
-  for(int i=0;i<10;i++){
-    SortableLinkedList inBucket=new SortableLinkedList();
-    for(int j=0;j<3;j++){
-      inBucket.add(i*10+j);
-    }
-    buckets[i]=inBucket;
-  }
-  radixSortSimple(d);
+  //radixSortSimple(d);
+  d.add(-453);d.add(-23); d.add(-6);
+  radixSort(d);
   System.out.println(d);
   }
 }
