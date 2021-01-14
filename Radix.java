@@ -27,25 +27,41 @@ public static void merge( SortableLinkedList original, SortableLinkedList[]bucke
 }
 
 public static void radixSortSimple(SortableLinkedList data){
-  int col=0;
+
+  /*
   for(int i=0;i<data.size();i++){
     int l=length(data.get(i));
     if(l>col){
       col=l;
     }
-  }
+  }*/
+
   SortableLinkedList[] buckets = new SortableLinkedList[10];
   for(int i=0;i<10;i++){
     buckets[i]=new SortableLinkedList();
   }
-  for(int i=0;i<col;i++){
+
+  /*
+ArrayList<Integer> dataArr = new ArrayList<Integer> (data.size());
+  int col=0; int curr;
+  while(data.size()>0){
+    curr=data.remove(0);
+    col=Math.max(col,length(curr));
+    dataArr.add(curr);
+  }
+*/
+int col=0; int i=0;
+  while(i<=col){
     while(data.size()>0){
       int d=data.remove(0);
+      col=Math.max(length(d),col);
     int colPut = nth(d,i);
     buckets[colPut].add(d);
   }
+  i++;
   merge(data,buckets);
 }
+
 }
 
 public static void radixSort(SortableLinkedList data){
@@ -91,14 +107,14 @@ for(int i=0;i<10;i++){
 }
 merge(original, buckets);
     System.out.println(original);
-
+*/
 
   SortableLinkedList d=new SortableLinkedList();
   d.add(4);d.add(345);d.add(23);
   //radixSortSimple(d);
-  d.add(-453);d.add(-23); d.add(-6);
-  radixSort(d);
+  //d.add(-453);d.add(-23); d.add(-6);
+  radixSortSimple(d);
   System.out.println(d);
-  */
+
   }
 }
