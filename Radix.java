@@ -15,7 +15,17 @@ public static void merge(MyLinkedList original, MyLinkedList[] buckets){
     return nn.length();
   }
 
+public static void merge( SortableLinkedList original, SortableLinkedList[]buckets){
+  for(int i=0;i<buckets.length;i++){
+    original.extend(buckets[i]);
+}
+}
+/*
+public static void radixSortSimple(SortableLinkedList data){
 
+}
+public static void radixSort(SortableLinkedList data);
+*/
   public static void main (String[] args){
 
     /*
@@ -39,5 +49,16 @@ for(int i=0;i<10;i++){
 merge(original, buckets);
     System.out.println(original);
   */
+
+  SortableLinkedList d=new SortableLinkedList();
+  //d.add(4);d.add(345);d.add(23);
+  SortableLinkedList[] buckets=new SortableLinkedList[10];
+  for(int i=0;i<10;i++){
+    SortableLinkedList inBucket=new SortableLinkedList();
+    for(int j=0;j<3;j++){
+      inBucket.add(i*10+j);
+    }
+    buckets[i]=inBucket;
+  }
   }
 }
